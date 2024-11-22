@@ -1,0 +1,66 @@
+
+
+services:
+  app:
+    image: pytorch/pytorch:latest  # or tensorflow/tensorflow:latest
+    container_name: app
+    volumes:
+      - .:/workspace
+    build:
+      context: ./app  # The build context points to the `app` director
+    working_dir: /workspace
+    ports:
+      - "8888:8888"  # Jupyter Notebook/Lab if needed
+    environment:
+      - HF_HOME=/workspace/.cache/huggingface  # Huggingface Hub cache
+    depends_on:
+      - mongodb
+      - qdrant
+      - clearml
+    command: /bin/bash -c "pip install -r requirements.txt && python app.py"
+
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  qdrant:
+    image: qdrant/qdrant:v1.3.2  # Replace with the latest version if needed
+    container_name: qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    environment:
+      - QDRANT__SERVICE__GRPC_PORT=6334
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  clearml:
+    image: allegroai/clearml:latest
+    container_name: clearml
+    ports:
+      - "8080:8080"  # Web UI
+      - "8008:8008"  # API
+      - "8081:8081"  # Files
+    environment:
+      # - CLEARML_API_ACCESS_KEY=your_access_key
+      # - CLEARML_API_SECRET_KEY=your_secret_key
+      - CLEARML_WEB_HOST=http://localhost:8080
+      - CLEARML_APISERVER_HOST=http://localhost:8008
+      - CLEARML_FILES_HOST=http://localhost:8081
+    volumes:
+      - clearml_data:/mnt/clearml
+      - clearml_logs:/var/log/clearml
+
+volumes:
+  mongo_data:
+  qdrant_data:
+  clearml_data:
+  clearml_logs:
