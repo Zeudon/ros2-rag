@@ -7,3 +7,7 @@ huggingface-hub
 pymongo
 qdrant-client
 clearml
+gradio
+youtube-transcript-api
+google-api-python-client
+yt-dlp
