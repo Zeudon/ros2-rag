@@ -11,3 +11,7 @@ gradio
 youtube-transcript-api
 google-api-python-client
 yt-dlp
+pyyaml
+nbimporter
+nltk
+sentence-transformers
