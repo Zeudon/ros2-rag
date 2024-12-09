@@ -1,0 +1,51 @@
+Question,Answer
+What is ROS 2?,ROS 2 is an open-source framework for robot software development supporting real-time performance and multi-robot systems.
+How do you install ROS 2 on Ubuntu?,sudo apt update && sudo apt install ros-foxy-desktop
+How do you create a ROS 2 workspace?,mkdir -p ~/ros2_ws/src && cd ~/ros2_ws && colcon build
+What is the role of colcon in ROS 2?,"It builds, tests, and installs ROS 2 packages with dependency management."
+How do you source a ROS 2 workspace?,source install/setup.bash
+How do you create a new ROS 2 Python package?,ros2 pkg create my_package --build-type ament_python
+How do you run a ROS 2 node?,ros2 run <package_name> <node_name>
+What is the purpose of rclpy?,rclpy is the Python client library for ROS 2.
+How do you create a simple ROS 2 publisher in Python?,"self.publisher = self.create_publisher(String, 'topic', 10)"
+How do you create a simple ROS 2 subscriber in Python?,"self.create_subscription(String, 'topic', self.callback, 10)"
+What is Nav2?,Nav2 (Navigation 2) is a framework for robot navigation in ROS 2.
+How do you launch Nav2?,ros2 launch nav2_bringup navigation_launch.py
+What is the purpose of the Nav2 planner server?,It computes the path from the robot’s current position to the goal.
+How do you send a navigation goal using Python?,goal_msg.pose.position.x = 1.0
+How do you configure the recovery behaviors in Nav2?,Edit behavior_tree.xml.
+What does the DWB controller do in Nav2?,It controls the robot to follow a path while avoiding obstacles.
+How do you enable dynamic obstacle avoidance in Nav2?,inflation_layer: inflation_radius: 0.5
+How do you simulate navigation in Gazebo?,ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+How do you visualize a robot’s planned path in RViz2?,Add the Path display.
+What is the role of the Nav2 controller server?,It converts a global plan into velocity commands.
+What is MoveIt 2?,MoveIt 2 is a framework for robotic motion planning and manipulation in ROS 2.
+How do you set up a MoveIt 2 workspace?,ros2 launch moveit_setup_assistant setup_assistant.launch.py
+How do you plan to a specific joint configuration?,move_group.set_named_target('home')
+How do you add a collision object to the planning scene?,"scene.add_box('box', pose, (0.5, 0.5, 0.5))"
+How do you visualize MoveIt 2 planning in RViz2?,Launch MoveIt 2 with RViz2 integration.
+How do you execute a planned trajectory?,"move_group.execute(plan, wait=True)"
+How do you use an interactive marker with MoveIt 2?,Add InteractiveMarker in RViz2.
+How do you enable end-effector control in MoveIt 2?,Use pose_target.
+How do you reset the planning scene?,scene.clear()
+What is an SRDF file in MoveIt 2?,It defines robot configurations like planning groups.
+What is Gazebo?,"Gazebo is a simulator for robots, providing physics-based simulations."
+How do you launch a Gazebo world?,ros2 launch gazebo_ros empty_world.launch.py
+How do you spawn a robot in Gazebo?,ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+How do you attach a sensor to a robot in Gazebo?,<sensor type='ray' name='laser'>
+How do you control a robot in Gazebo with ROS 2?,Publish to /cmd_vel.
+How do you reset the Gazebo simulation?,ros2 service call /reset_simulation std_srvs/srv/Empty
+How do you visualize Gazebo topics in RViz2?,Subscribe to topics like /scan.
+How do you control the simulation time in Gazebo?,ros2 param set /gazebo use_sim_time true
+How do you pause a Gazebo simulation?,ros2 service call /pause_physics std_srvs/srv/Empty
+How do you spawn models in Gazebo using ROS 2?,ros2 run gazebo_ros spawn_entity.py -file model.sdf
+How do you enable replanning in Nav2?,"planner_plugins: ['NavFnPlanner', 'SmacPlanner']"
+How do you change robot footprints in Nav2?,robot_radius: 0.5
+How do you configure velocity limits in Nav2?,max_vel_x: 0.5
+How do you add a custom recovery behavior?,Add to behavior_tree.xml.
+How do you enable Gazebo with a real-time clock?,ros2 param set /gazebo enable_real_time true
+How do you reset a robot’s pose in Gazebo?,ros2 service call /reset_world std_srvs/srv/Empty
+How do you set waypoints in Nav2?,Use the WaypointFollower node.
+How do you generate a costmap in Nav2?,Use the costmap_2d package.
+How do you test motion planning in MoveIt 2 without a robot?,Use a virtual joint in SRDF.
+How do you simulate laser data in Gazebo?,<plugin name='gazebo_ros_laser' filename='libgazebo_ros_laser.so'>
