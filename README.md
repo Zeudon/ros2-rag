@@ -16,4 +16,4 @@ Attached below are screenshots of the ClearML dashboard and pipeline. The last i
 As seen from the image, we have scraped 1361 URLs, that include the unique youtube videos, github repository files and the web pages.
 
 ### Featurization Pipeline
-![Featurization Pipeline](ClearML_Featurization.png "This is the Pipeline Screenshot")
+[Featurization Pipeline](ClearML_Featurization.png "This is the Pipeline Screenshot")
