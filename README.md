@@ -38,3 +38,6 @@ As seen from the image, we have scraped 1361 URLs, that include the unique youtu
 
 4) Question 4 - What is the purpose of rqt_graph and how can it help in debugging a ROS system?
 ![Question 4 Output](Q4O1.png "This is the Answer Screenshot")
+
+5) Question 5 - What is the function of rviz in ROS?
+![Question 5 Output](Q5O1.png "This is the Answer Screenshot")![alt text](Q5O1.png)
