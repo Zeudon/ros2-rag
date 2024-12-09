@@ -6,3 +6,14 @@ A RAG System for ROS2 Robotics using Pytorch, TF, Keras, MongoDB, Qdrant and Cle
 ### Environment and Tooling Milestone
 Attaching below the screenshot of the docker containers, There is 1 container each for MongoDB, QDrant and the App. The remaining containers are for clearML, for fileserver, API server and web host.
 ![Docker Screenshot](Docker_Screenshot.png "This is the Docker Screenshot")
+
+### ETL Pipeline
+Attached below are screenshots of the ClearML dashboard and pipeline. The last image shows the output when we query all the unique URLs that was ingested (GitHub + Youtube + Web pages)
+![ETL Pipeline](ClearML3.png "This is the Pipeline Screenshot")
+![ETL Pipeline](ClearML2.png "This is the Pipeline Screenshot")
+![ETL Pipeline](ClearML1.png "This is the Pipeline Screenshot")
+![Ingested URLs](Ingested_URLs.png "These are the Ingested URLs")
+As seen from the image, we have scraped 1361 URLs, that include the unique youtube videos, github repository files and the web pages.
+
+### Featurization Pipeline
+[Featurization Pipeline](ClearML_Featurization.png "This is the Pipeline Screenshot")
