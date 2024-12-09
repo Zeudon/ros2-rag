@@ -1,10 +1,37 @@
+# Team
+1) Nived Damodaran, Net ID: nd2743, GitHub Username: Zeudon, HuggingFace Username: Zeudon
+2) Sai Harsha Mupparaju, Net ID: sm12754, GitHub Username: harshamupparaju, HuggingFace Username: neo2446
+
 # ros2-rag
-A RAG System for ROS2 Robotics using Pytorch, TF, Keras, MongoDB, Qdrant and ClearML
+A RAG System for ROS2 Robotics using Pytorch, TF, Keras, MongoDB, Qdrant and ClearML. We use docker containers for the environment setup, with different containers for MongoDB server, QDrant, ClearML and the App. The first step is the ETL Pipeline, where we scrape data from Youtube videos, GitHub repositories and Documentation Web pages. The scraped data is then stored in a MongoDB collection. The next step is Featurization. In this step, we first retrieve the scraped data from the MongoDB collection, clean the text, create embeddings using sentence transformers and store it in a different MongoDB collection. We then retrieve data from this collection and store the embeddings into QDrant Vector Database as well, with the data being the payload. For Inferencing, we first retrieve the query, create an embedding out of it and find top K similar documents using QDrant's Cosine similarity. We pass the original query along with the retrieved documents as context to the LLM which then gives us the output. We have also created a Gradio application, as the user interface. Answers are generated and displayed upon choosing the question from the dropdown.
 
-# Setup
-Create a file called localsecrets.yml in the app folder. Paste the content below and replace with the api key generated from google developer console:  
-api_keys:    
-&nbsp;&nbsp;youtube: your_api_key    
+## Milestones and Screenshots
 
-To run the docker containers, install docker-compose.
-Execute "docker-compose build", and then "docker-compose up" in the main ros2-rag directory. To check the list of containers running, use "docker ps"
+### Environment and Tooling Milestone
+Attaching below the screenshot of the docker containers, There is 1 container each for MongoDB, QDrant and the App. The remaining containers are for clearML, for fileserver, API server and web host.
+![Docker Screenshot](Docker_Screenshot.png "This is the Docker Screenshot")
+
+### ETL Pipeline
+Attached below are screenshots of the ClearML dashboard and pipeline. The last image shows the output when we query all the unique URLs that was ingested (GitHub + Youtube + Web pages)
+![ETL Pipeline](ClearML3.png "This is the Pipeline Screenshot")
+![ETL Pipeline](ClearML2.png "This is the Pipeline Screenshot")
+![ETL Pipeline](ClearML1.png "This is the Pipeline Screenshot")
+![Ingested URLs](Ingested_URLs.png "These are the Ingested URLs")
+As seen from the image, we have scraped 1361 URLs, that include the unique youtube videos, github repository files and the web pages.
+
+### Featurization Pipeline
+![Featurization Pipeline](ClearML_Featurization.png "This is the Pipeline Screenshot")
+
+### Output Screenshots
+
+1) Question 1 - Tell me how can I navigate to a specific pose - include replanning aspects in your answer
+![Question 1 Output](Q2O1.png "This is the Answer Screenshot")
+![Question 1 Output](Q2O2.png "This is the Answer Screenshot")
+![Question 1 Output](Q2O3.png "This is the Answer Screenshot")
+
+2) Can you provide me with code for this task?
+![Question 2 Output](Q3O1.png "This is the Answer Screenshot")
+![Question 2 Output](Q3O2.png "This is the Answer Screenshot")
+
+3) Question 2 - Tell me the difference between ROS1 and ROS2
+![Question 2 Output](Output1.png "This is the Answer Screenshot")
