@@ -33,5 +33,8 @@ As seen from the image, we have scraped 1361 URLs, that include the unique youtu
 ![Question 2 Output](Q3O1.png "This is the Answer Screenshot")
 ![Question 2 Output](Q3O2.png "This is the Answer Screenshot")
 
-3) Question 2 - Tell me the difference between ROS1 and ROS2
-![Question 2 Output](Output1.png "This is the Answer Screenshot")
+3) Question 3 - Tell me the difference between ROS1 and ROS2
+![Question 3 Output](Output1.png "This is the Answer Screenshot")
+
+4) Question 4 - What is the purpose of rqt_graph and how can it help in debugging a ROS system?
+![Question 4 Output](Q4O1.png "This is the Answer Screenshot")
